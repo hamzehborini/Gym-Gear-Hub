@@ -1,0 +1,211 @@
+# Lovable Prompt — Premium Gym Supplements Website (Frontend Only)
+
+Copy everything below this line into Lovable.
+
+---
+
+Act as a senior UI/UX designer and senior React developer with experience building websites for premium sports nutrition brands. Build a complete, production-quality, **frontend-only** website for a premium gym supplements brand called **"APEX FUEL"** (render the logo as a bold athletic wordmark).
+
+## 1. Tech Stack — Strict Rules
+
+Use ONLY:
+
+- React 18 + Vite + TypeScript
+- Tailwind CSS
+- shadcn/ui components
+- Lucide React icons
+- Framer Motion for all animations
+
+Hard constraints:
+
+- Do NOT use Next.js.
+- Do NOT create any backend, API routes, or server code.
+- Do NOT add authentication of any kind.
+- Do NOT use Firebase, Supabase, or any database.
+- All data must come from local mock data files.
+- Cart state lives in React state (Context + useReducer or a custom hook). No persistence needed.
+
+## 2. Design Direction — This Is the Most Important Section
+
+The site must feel like a top-tier performance brand — think **Gymshark, Ghost, Optimum Nutrition, Alphalete**. Bold, energetic, dark, and athletic — but still clean and premium. It must NOT look like a generic e-commerce template.
+
+**Color system:**
+
+- Background: deep charcoal black (`#0B0D0E`) and near-black (`#060708`) — never flat gray panels
+- Surface cards: dark graphite (`#131619`) with subtle 1px borders (`rgba(255,255,255,0.07)`)
+- Primary text: crisp white (`#F7F8F9`)
+- Secondary text: cool gray (`#8A9199`)
+- **Primary accent: electric volt green (`#B4FF39`)** — for prices, active states, primary CTA buttons, hover effects, and energy accents
+- Secondary accent: electric cyan (`#2DD4FF`) — used sparingly for badges, category tags, and gradient touches
+- Occasional subtle green→cyan gradients on CTAs and section glows — energetic but tasteful, never rainbow
+
+**Typography:**
+
+- Headings: a strong condensed/athletic sans (e.g., "Oswald", "Archivo Black", or "Bebas Neue" via Google Fonts), often UPPERCASE with tight tracking for big headlines
+- Body/UI: Inter or Manrope
+- Small uppercase eyebrow labels with wide tracking above section headings (e.g., `FUEL YOUR GRIND`, `THE STACK`) in volt green
+- Headlines are heavy and impactful (700–900 weight) — the opposite energy of a luxury serif site
+
+**Motion & feel (Framer Motion):**
+
+- Punchy but smooth: fade + upward reveal (`y: 30 → 0`) on scroll, staggered children, `duration: 0.4–0.6`, ease `[0.22, 1, 0.36, 1]`
+- Product image hover: quick scale (`1 → 1.06` over 400ms) with a subtle volt-green glow shadow appearing under the card
+- Buttons: hover lift with a green glow (`box-shadow` with the volt color at low opacity), slight scale on press
+- Modal: fade + scale from 0.95 with backdrop blur
+- A subtle animated gradient glow (green/cyan, very low opacity) behind the hero headline
+- Respect `prefers-reduced-motion`
+
+**Surface details:**
+
+- Rounded corners (`rounded-xl` / `rounded-2xl`), soft dark shadows
+- Glassmorphism on the sticky navbar (dark translucent + `backdrop-blur`) and modal backdrop
+- Thin volt-green divider lines between major sections
+- Small angled/skewed accent shapes or diagonal section dividers are welcome for athletic energy — used sparingly
+
+## 3. Navigation
+
+Sticky glassmorphic navbar (dark translucent, backdrop-blur, solid after scrolling past hero):
+
+- Left: bold wordmark "APEX FUEL" with the "FUEL" part in volt green — clicking navigates Home
+- Links: **Products** (scrolls to the product grid), **Cart** (Lucide `ShoppingCart` icon with a volt-green badge showing item count when > 0)
+- Mobile: `Menu` icon opens a full-screen dark overlay menu with large bold links and staggered fade-in; `X` closes
+
+React Router pages: `/` (Home), `/cart` (Cart).
+
+## 4. Home Page
+
+### 4.1 Hero — full screen
+
+- Full-viewport hero with a high-quality dark gym/supplement background image (moody gym, protein shaker, or dark product shot from Unsplash) with a dark gradient overlay
+- Volt-green uppercase eyebrow: `PREMIUM SPORTS NUTRITION`
+- Massive bold uppercase headline: **"FUEL THE GRIND"** with a green→cyan gradient on one word, punchy staggered reveal
+- Subtitle in cool gray: one strong sentence about science-backed performance supplements
+- Two buttons:
+  - Primary: **Shop Supplements** — volt-green fill, dark text, `ArrowRight` icon, glow on hover; scrolls to products
+  - Secondary: **Why Apex** — ghost with thin border; scrolls to About
+- Subtle slow zoom on the background, animated scroll indicator at bottom
+
+### 4.2 About / Why Apex — two-column
+
+- Left: eyebrow `WHY APEX FUEL`, bold heading (e.g., "Engineered for Performance"), 2–3 paragraphs about lab-tested formulas, clean ingredients, and third-party testing, plus a stats row ("100% Lab Tested", "Zero Fillers", "50K+ Athletes") separated by thin volt dividers
+- Right: large image with rounded corners and a volt-green offset border frame behind it, reveal animation
+- Stacks on mobile
+
+### 4.3 Product Grid
+
+- Section header: eyebrow `THE STACK`, bold uppercase heading "Shop Supplements", short gray subtitle
+- Optional category filter pills above the grid (All / Protein / Pre-Workout / Creatine / Recovery) — selected pill fills volt green; filtering animates the grid with Framer Motion layout animations
+- Responsive grid: 4 columns desktop, 2 tablet, 1 mobile
+- **ProductCard**:
+  - Portrait product image (aspect ~3/4) in overflow-hidden rounded container, quick zoom + green glow shadow on hover
+  - Small cyan category badge on the image corner (e.g., `PRE-WORKOUT`)
+  - On hover: dark gradient rises with a volt-outlined "View Product" pill and `ArrowRight` fading in
+  - Below: product name (bold), flavor/one-line description clamped with `line-clamp-2` (no mid-sentence "..."), price in volt green
+  - 1px border shifting to faint volt green on hover; keyboard-focusable, opens the modal
+- Staggered fade-up on scroll
+
+### 4.4 Footer
+
+Dark footer, three columns: wordmark + tagline, quick links, contact placeholders. Thin volt-green top border.
+
+## 5. Product Modal
+
+Same structure as a premium store — clicking a card opens a large centered modal (shadcn Dialog, heavily styled):
+
+- Backdrop black/70 with blur; modal dark graphite, rounded-2xl, max-width ~1100px, fade + scale open; `X` close top-right
+- **Left:** large main image, vertical thumbnail gallery (horizontal strip on mobile), 3–4 thumbnails per product, active thumbnail gets a volt-green border, crossfade on change (`AnimatePresence`), `ChevronLeft`/`ChevronRight` arrows to cycle
+- **Right:**
+  - Cyan category badge + brand eyebrow
+  - Product name in big bold type
+  - Price in volt green
+  - Description paragraph (benefits, when to take)
+  - **Key Facts** block: small uppercase label + line like "25g protein · 5.5g BCAAs · 120 calories per serving"
+  - **Flavor** selector: elegant pill buttons (e.g., Chocolate, Vanilla, Berry Blast, Blue Raspberry, Unflavored — per product); selected pill fills volt green with dark text; only one selectable
+  - **Size** selector: pills like 1 LB / 2 LB / 5 LB (or 30 / 60 servings depending on product); same selected styling
+  - **Quantity** selector: bordered group with `Minus`, number, `Plus`, min 1
+  - Large **Add to Cart** button: full-width volt green, dark text, `ShoppingCart` icon, glow hover; requires flavor + size selected (subtle inline hint if missing); adds item with selections, shows a toast ("Added to your stack"), updates navbar badge
+- Accessibility: focus trap, ESC closes, focus returns to trigger, aria-modal and labels throughout; modal becomes a full-screen scrollable sheet on mobile
+
+## 6. Cart Page (`/cart`)
+
+- Eyebrow `YOUR STACK` + big bold title **Shopping Cart** with item count
+- Two columns (stack on mobile):
+
+**Left — cart items.** Each row: image thumbnail, name, selected flavor + size, unit price in volt green, quantity selector, line subtotal, remove button with fade/slide-out animation, thin dividers between items.
+
+**Right — sticky summary card:** Subtotal, Shipping (Complimentary in volt green above 50 JOD, otherwise 3 JOD), Tax (8%), thin volt divider, **Total** large in volt green. Full-width volt **Checkout** button (mock — toast "Checkout is not available in this demo") and ghost **Continue Shopping** button.
+
+**Empty state:** centered `ShoppingCart` icon, bold "Your stack is empty", volt "Shop Supplements" button.
+
+## 7. Currency — JOD
+
+All prices in **Jordanian Dinar (JOD)** through a single utility used everywhere:
+
+```ts
+export const formatPrice = (amount: number) =>
+  new Intl.NumberFormat("en-JO", {
+    style: "currency",
+    currency: "JOD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(amount);
+```
+
+No hardcoded "$" anywhere. Realistic supplement prices: roughly 15–70 JOD.
+
+## 8. Mock Data — `src/data/products.ts`
+
+```ts
+interface Product {
+  id: string;
+  name: string;
+  category: "Protein" | "Pre-Workout" | "Creatine" | "Recovery";
+  description: string;
+  keyFacts: string;
+  price: number;
+  flavors: string[];
+  sizes: string[];
+  images: string[]; // 3–4 images per product
+}
+```
+
+Create exactly 8 products with strong copy:
+
+1. Apex Whey Isolate — Protein
+2. Titan Mass Gainer — Protein
+3. Ignite Pre-Workout — Pre-Workout
+4. Nitro Pump Extreme — Pre-Workout
+5. Pure Creatine Monohydrate — Creatine
+6. Creatine HCL Elite — Creatine
+7. Recover BCAA+ — Recovery
+8. Night Repair ZMA — Recovery
+
+**Image rule (critical):** each product's images must plausibly show the SAME product — pick ONE strong hero image per product (dark supplement/protein tub, shaker, or gym product shot from Unsplash), then build the gallery from that same URL with different crop parameters (`&w=`, `&h=`, `&fit=crop`, `&crop=`) so thumbnails look like detail shots of the same item. Never mix unrelated photos, never show broken images. Add an `onError` fallback to the first image and meaningful alt text. Verify every URL loads.
+
+Also define `CartItem`: `{ product, flavor, size, quantity }` with merge logic (same product + flavor + size increments quantity).
+
+## 9. Folder Structure
+
+```
+src/
+  components/   (Navbar, Footer, Hero, About, ProductCard, ProductGrid,
+                 ProductModal, QuantitySelector, CartItem, CartSummary,
+                 Button, Badge, FlavorSelector, SizeSelector, SectionHeading)
+  pages/        (Home.tsx, Cart.tsx)
+  data/         (products.ts)
+  hooks/        (useCart.ts or CartContext)
+  types/        (index.ts)
+  lib/          (formatPrice, utils)
+  assets/
+  App.tsx
+  main.tsx
+```
+
+## 10. Quality Bar
+
+- Strict TypeScript, no `any`; no duplicated code
+- Perfect responsiveness on desktop, tablet, mobile — polish the modal and cart on small screens
+- All interactive elements keyboard-accessible with visible volt-green focus rings; semantic HTML; ARIA labels on icon-only buttons
+- Smooth 60fps animations — animate only transform/opacity
+
+The final result must feel like a modern premium sports nutrition flagship — dark, energetic, and confident, comparable to Gymshark or Ghost — not a generic store template.
