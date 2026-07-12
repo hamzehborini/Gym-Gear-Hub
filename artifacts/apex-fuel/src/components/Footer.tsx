@@ -19,22 +19,22 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="font-display font-bold text-lg uppercase tracking-wider text-white mb-6">Shop</h4>
+            <h4 className="font-display font-bold text-lg uppercase tracking-wider text-white mb-6">Explore</h4>
             <ul className="space-y-4 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Proteins</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Pre-Workouts</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Creatine</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Recovery</a></li>
+              <li><Link href="/" className="hover:text-primary transition-colors">Shop</Link></li>
+              <li><Link href="/mission" className="hover:text-primary transition-colors">Mission</Link></li>
+              <li><Link href="/athletes" className="hover:text-primary transition-colors">Athletes</Link></li>
+              <li><Link href="/cart" className="hover:text-primary transition-colors">Cart</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-display font-bold text-lg uppercase tracking-wider text-white mb-6">Support</h4>
             <ul className="space-y-4 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">FAQ</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Shipping</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Returns</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Contact Us</a></li>
+              <li><Link href="/" className="hover:text-primary transition-colors">FAQ</Link></li>
+              <li><Link href="/" className="hover:text-primary transition-colors">Shipping</Link></li>
+              <li><Link href="/" className="hover:text-primary transition-colors">Returns</Link></li>
+              <li><Link href="/" className="hover:text-primary transition-colors">Contact Us</Link></li>
             </ul>
           </div>
         </div>

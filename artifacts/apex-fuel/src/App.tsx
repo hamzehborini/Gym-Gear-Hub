@@ -7,6 +7,8 @@ import { CartProvider } from './context/CartContext';
 
 import Home from './pages/home';
 import CartPage from './pages/cart';
+import MissionPage from './pages/mission';
+import AthletesPage from './pages/athletes';
 
 const queryClient = new QueryClient();
 
@@ -15,6 +17,8 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/cart" component={CartPage} />
+      <Route path="/mission" component={MissionPage} />
+      <Route path="/athletes" component={AthletesPage} />
       <Route component={NotFound} />
     </Switch>
   );

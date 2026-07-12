@@ -35,8 +35,8 @@ export function Navbar() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           <Link href="/" className={`text-sm font-semibold tracking-wider uppercase transition-colors hover:text-primary ${location === '/' ? 'text-primary' : 'text-gray-300'}`}>Shop</Link>
-          <a href="#" className="text-sm font-semibold tracking-wider uppercase text-gray-300 transition-colors hover:text-primary">Mission</a>
-          <a href="#" className="text-sm font-semibold tracking-wider uppercase text-gray-300 transition-colors hover:text-primary">Athletes</a>
+          <Link href="/mission" className={`text-sm font-semibold tracking-wider uppercase transition-colors hover:text-primary ${location === '/mission' ? 'text-primary' : 'text-gray-300'}`}>Mission</Link>
+          <Link href="/athletes" className={`text-sm font-semibold tracking-wider uppercase transition-colors hover:text-primary ${location === '/athletes' ? 'text-primary' : 'text-gray-300'}`}>Athletes</Link>
         </nav>
 
         {/* Actions */}
@@ -78,8 +78,8 @@ export function Navbar() {
           </div>
           <nav className="flex flex-col gap-6 text-2xl font-display font-bold uppercase tracking-wider">
             <Link href="/" className={`${location === '/' ? 'text-primary' : 'text-white'} hover:text-primary`} onClick={() => setMobileMenuOpen(false)}>Shop</Link>
-            <a href="#" className="text-white hover:text-primary" onClick={() => setMobileMenuOpen(false)}>Mission</a>
-            <a href="#" className="text-white hover:text-primary" onClick={() => setMobileMenuOpen(false)}>Athletes</a>
+            <Link href="/mission" className={`${location === '/mission' ? 'text-primary' : 'text-white'} hover:text-primary`} onClick={() => setMobileMenuOpen(false)}>Mission</Link>
+            <Link href="/athletes" className={`${location === '/athletes' ? 'text-primary' : 'text-white'} hover:text-primary`} onClick={() => setMobileMenuOpen(false)}>Athletes</Link>
           </nav>
         </div>
       )}
